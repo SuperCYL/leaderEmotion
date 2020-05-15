@@ -1,6 +1,6 @@
 {
   "name": "@hk-componentPackage/leaderEmotion",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "dependencies": {
     "bcore": "0.0.18",
     "jquery": "2.1.4",
@@ -30,6 +30,16 @@
         }
       }
     },
+    "events": {                              
+      "click": {                       
+        "description": "点击事件",          
+        "fields": {                         
+          "value": {   
+            "eventId":"唯一标示"               
+          }
+        }
+      }
+    },
     "config": {
       "size": {
         "name": "字号",
@@ -44,12 +54,13 @@
     "api_data": {
       "source": [
         {
+          "eventId": "2",
           "title": "习大大",
           "rankId": 1,
           "sentimentVos": [
             {
               "irSid": "21",
-              "postalCode": 310000,
+              "postCode": 310000,
               "docpubtime": "00:00",
               "doctitle": "启动八大行动计划 2020年浙江省推动山海协作这样干",
               "docauthor": "浙报融媒体"
@@ -57,25 +68,27 @@
           ]
         },
         {
+          "eventId": "2",
+          "title": "测试",
+          "rankId": 1,
+          "sentimentVos": [
+            {
+              "irSid": "21",
+              "postCode": 310000,
+              "docpubtime": "00:00",
+              "doctitle": "启动八大行动计划 2020年浙江省推动山海协作这样干",
+              "docauthor": "浙报融媒体"
+            }
+          ]
+        },
+        {
+          "eventId": "2",
           "title": "李克强",
-          "rankId": 1,
+          "rankId": 3,
           "sentimentVos": [
             {
               "irSid": "21",
-              "postalCode": 310000,
-              "docpubtime": "00:00",
-              "doctitle": "启动八大行动计划 2020年浙江省推动山海协作这样干",
-              "docauthor": "浙报融媒体"
-            }
-          ]
-        },
-        {
-          "title": "测试002",
-          "rankId": 1,
-          "sentimentVos": [
-            {
-              "irSid": "21",
-              "postalCode": 310000,
+              "postCode": 310000,
               "docpubtime": "00:00",
               "doctitle": "启动八大行动计划 2020年浙江省推动山海协作这样干",
               "docauthor": "浙报融媒体"

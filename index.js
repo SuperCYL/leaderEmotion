@@ -41,19 +41,27 @@ module.exports = Event.extend(function Base(container, config) {
   render: function (data, config) {
     data = this.data(data);
     var cfg = this.mergeConfig(config);
-
+    let that = this;
     var html = `
           <div id="leaderEmotionCloud" class="wrapper" style="height:100%;overflow:hidden;">
           <div class="tagcloud" style="width:100%;height:100%;">`
             for(var i=0;i<data.length;i++){
-              html+=` <a class="tagcloudItem b01" href="#" style="font-size:40px;color:#FFA633">${data[i]["title"]}</a>`
+              if(data[i]["rankId"] == 1){
+                html+=`<a class="tagcloudItem b01" eventId="${data[i]["eventId"]}" href="#" style="font-size:40px;color:#F74C64">${data[i]["title"]}</a>`
+              }
+              else if(data[i]["rankId"] == 2){
+                html+=`<a class="tagcloudItem b02" eventId="${data[i]["eventId"]}" href="#" style="font-size:36px;color:#FFA633">${data[i]["title"]}</a>` 
+              }
+              else if(data[i]["rankId"] == 3){
+                html+=`<a class="tagcloudItem b02" eventId="${data[i]["eventId"]}" href="#" style="font-size:32px;color:#F9C824">${data[i]["title"]}</a>` 
+              }
+              else if(data[i]["rankId"] == 4){
+                html+=`<a class="tagcloudItem b02" eventId="${data[i]["eventId"]}" href="#" style="font-size:28px;color:#4FC8FF">${data[i]["title"]}</a>` 
+              }
+              else if(data[i]["rankId"] == 5){
+                html+=`<a class="tagcloudItem b02" eventId="${data[i]["eventId"]}" href="#" style="font-size:24px;color:#FFFFFF">${data[i]["title"]}</a>` 
+              }
             }
-            // <a class="tagcloudItem b02" href="#" style="font-size:36px;color:#F74C64">韩正</a>
-            // <a class="tagcloudItem b03" href="#" style="font-size:29px;color:#4FC8FF">刘鹤</a>
-            // <a class="tagcloudItem b04" href="#" style="font-size:29px;color:#F9C824">孙春兰</a>
-            // <a class="tagcloudItem b03" href="#" style="font-size:26px;color:#fff;">李强</a>
-            // <a class="tagcloudItem b02" href="#" style="font-size:22px;color:#4FC8FF">王晨</a>
-            // <a class="tagcloudItem b03" href="#" style="font-size:24px;color:#21F0F3">李鸿忠</a>
             
         html+=`</div> </div>`  
 
@@ -74,7 +82,8 @@ module.exports = Event.extend(function Base(container, config) {
     //如果有需要的话,更新样式
 
     $("#leaderEmotionCloud .tagcloudItem").click(function(){
-      console.log($(this));
+      console.log($(this).attr("eventId"));
+      that.emit('click', {eventId:$(this).attr("eventId")}); 
     })
 
     this.updateStyle();
